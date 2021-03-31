@@ -1,2 +1,20 @@
 1613807998443:;set _root_.scala.collection.Seq(historyPath := None,shellPrompt := { _ => "" },SettingKey[_root_.scala.Option[_root_.sbt.File]]("sbtStructureOutputFile") in _root_.sbt.Global := _root_.scala.Some(_root_.sbt.file("/tmp/sbt-structure1.xml")),SettingKey[_root_.java.lang.String]("sbtStructureOptions") in _root_.sbt.Global := "download, resolveClassifiers");apply -cp "/home/dartius/.local/share/JetBrains/IntelliJIdea2020.2/Scala/repo/org.jetbrains/sbt-structure-extractor/scala_2.12/sbt_1.0/2018.2.1+4-88400d3f/jars/sbt-structure-extractor.jar" org.jetbrains.sbt.CreateTasks;*/*:dumpStructure
 1616950513568:;set _root_.scala.collection.Seq(historyPath := None,shellPrompt := { _ => "" },SettingKey[_root_.scala.Option[_root_.sbt.File]]("sbtStructureOutputFile") in _root_.sbt.Global := _root_.scala.Some(_root_.sbt.file("/tmp/sbt-structure.xml")),SettingKey[_root_.java.lang.String]("sbtStructureOptions") in _root_.sbt.Global := "download, resolveClassifiers");apply -cp "/home/dartius/.local/share/JetBrains/IntelliJIdea2020.2/Scala/repo/org.jetbrains/sbt-structure-extractor/scala_2.12/sbt_1.0/2018.2.1+4-88400d3f/jars/sbt-structure-extractor.jar" org.jetbrains.sbt.CreateTasks;*/*:dumpStructure
+1617190140625:ls
+1617190143879:run
+1617190159239:run 195.201.139.41
+1617190200663:run
+1617190301994:run 195.201.139.41
+1617191890752:clear
+1617192674349:run vk.com
+1617192719467:run defence.gov
+1617192752595:run defense.gov
+1617192982479:ls
+1617192991414:run usurt.ru
+1617193035455:run defense.gov
+1617193659477:clear
+1617193679945:run vk.com
+1617193746286:run defense.gov
+1617193797911:run
+1617193811823:run nonexistingaddress.com
+1617193825575:run mail.ru

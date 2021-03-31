@@ -35,25 +35,35 @@ object Main {
     case Some(value) => value
     case None => ""
   }
-
-  def main(args: Array[String]) = {
-    lazy val traceRouteResult = Process("traceroute 195.201.139.41").lazyLines
-    val g = traceRouteResult.drop(2)
-      .map(ipRex.findFirstIn(_))
-      .foldLeft(List[String]()) {
+  def getOutput(tracerouteLines: List[String]): Unit = {
+    tracerouteLines.drop(2) // из вывода traceroute выбрасываем 2 первые строки
+      .map(ipRex.findFirstIn(_)) // регуляркой в каждой находим ip
+      .foldLeft(List[String]()) { // фильтруем всё кроме айпишников (убираем скобочки)
         case (list: List[String], Some(value)) => list.appended(value.dropRight(1).drop(1))
         case (list, None) => list
       }
-      .map(getIpInformation).zipWithIndex
-      .map {
+      .map(getIpInformation).zipWithIndex // узнаём информацию о каждом из айпишников, получаем JSON-чик
+      .map { // далее объекты IpResponse парсим в строковое представление.
         case (Some(IpResponse(country, isp, as, asname, query)), value) =>
           List(Some(value.toString), Some(query), country, isp, as, asname)
             .map(getFieldRepr)
             .foldLeft("")((x, y) => x ++ "| " ++ y)
         case _ => None
       }
-      .prepended("query | country | isp | as | asname")
-      .foreach(println(_))
+      .prepended("id | query | country | isp | as | asname")
+      .foreach(println(_)) // распечатываем
   }
 
+  def main(args: Array[String]) = {
+    args match { // матчимся по аргументам
+      case Array(ip) => Try { // если массив из одного элемента,
+        Process("traceroute " + ip).lazyLines.toList // то поднимаем процесс traceroute с этим аргументом
+      } match {
+        case Success(lines) => getOutput(lines) // если процесс поднялся, запускаем функцию getOutput
+        case Failure(exception) => print(exception)
+      }
+      case _ => print("Not enough args.")
+    }
+
+  }
 }
